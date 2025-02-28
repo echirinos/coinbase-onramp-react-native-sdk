@@ -44,6 +44,11 @@ export class CoinbaseApi {
           .update(message)
           .digest('hex');
 
+        // Initialize headers if they don't exist
+        if (!request.headers) {
+          request.headers = {};
+        }
+
         request.headers['CB-ACCESS-TIMESTAMP'] = timestamp;
         request.headers['CB-ACCESS-SIGN'] = signature;
       }

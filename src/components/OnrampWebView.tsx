@@ -160,7 +160,6 @@ export const OnrampWebView: React.FC<OnrampWebViewProps> = ({
           allowsInlineMediaPlayback={true}
           mediaPlaybackRequiresUserAction={false}
           // For Android in-app browser support
-          useWebKit={true}
           // Support for Apple Pay in WebView
           allowsBackForwardNavigationGestures={true}
         />

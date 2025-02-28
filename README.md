@@ -5,9 +5,8 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/coinbase-onramp-react-native-sdk"><img src="https://img.shields.io/npm/v/coinbase-onramp-react-native-sdk.svg" alt="npm version"></a>
-  <a href="https://github.com/echirinos/coinbase-onramp-react-native-sdk/actions"><img src="https://github.com/echirinos/coinbase-onramp-react-native-sdk/workflows/tests/badge.svg" alt="Build Status"></a>
-  <a href="https://github.com/echirinos/coinbase-onramp-react-native-sdk/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/coinbase-onramp-react-native-sdk.svg" alt="License"></a>
+  <a href="https://github.com/echirinos/coinbase-onramp-react-native-sdk/actions/workflows/tests.yml"><img src="https://github.com/echirinos/coinbase-onramp-react-native-sdk/actions/workflows/tests.yml/badge.svg" alt="Build Status"></a>
+  <a href="https://github.com/echirinos/coinbase-onramp-react-native-sdk/blob/main/LICENSE"><img src="https://img.shields.io/github/license/echirinos/coinbase-onramp-react-native-sdk" alt="License"></a>
 </p>
 
 The Coinbase Onramp React Native SDK allows you to build delightful cryptocurrency purchasing experiences in your native Android and iOS apps using React Native. We provide powerful and customizable UI components that can be used out-of-the-box to enable your users to buy crypto directly within your app.
@@ -31,17 +30,17 @@ Get started with our [integration guides](#basic-implementation) and [example pr
 
 ```bash
 # Using npm
-npm install coinbase-onramp-react-native-sdk
+npm install github:echirinos/coinbase-onramp-react-native-sdk
 
 # Using yarn
-yarn add coinbase-onramp-react-native-sdk
+yarn add github:echirinos/coinbase-onramp-react-native-sdk
 ```
 
 ### Expo
 
 ```bash
 # Using expo
-expo install coinbase-onramp-react-native-sdk
+expo install github:echirinos/coinbase-onramp-react-native-sdk
 ```
 
 Next, add the following to your `app.json` file:
