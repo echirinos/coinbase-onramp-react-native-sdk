@@ -1,7 +1,7 @@
 # Coinbase Onramp React Native SDK
 
 <p align="center">
-  <img src="https://www.coinbase.com/img/coinbase-logo.svg" alt="Coinbase Logo" width="250"/>
+  <img src="https://static-assets.coinbase.com/cdp/lolp/images/cdp-social-card.jpg" alt="Coinbase Logo" width="250"/>
 </p>
 
 <p align="center">
