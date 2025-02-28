@@ -5,6 +5,7 @@
 </p>
 
 <p align="center">
+  <a href="https://www.npmjs.com/package/coinbase-onramp-react-native-sdk"><img src="https://img.shields.io/npm/v/coinbase-onramp-react-native-sdk.svg" alt="npm version"></a>
   <a href="https://github.com/echirinos/coinbase-onramp-react-native-sdk/actions/workflows/tests.yml"><img src="https://github.com/echirinos/coinbase-onramp-react-native-sdk/actions/workflows/tests.yml/badge.svg" alt="Build Status"></a>
   <a href="https://github.com/echirinos/coinbase-onramp-react-native-sdk/blob/main/LICENSE"><img src="https://img.shields.io/github/license/echirinos/coinbase-onramp-react-native-sdk" alt="License"></a>
 </p>
@@ -30,17 +31,17 @@ Get started with our [integration guides](#basic-implementation) and [example pr
 
 ```bash
 # Using npm
-npm install github:echirinos/coinbase-onramp-react-native-sdk
+npm install coinbase-onramp-react-native-sdk
 
 # Using yarn
-yarn add github:echirinos/coinbase-onramp-react-native-sdk
+yarn add coinbase-onramp-react-native-sdk
 ```
 
 ### Expo
 
 ```bash
 # Using expo
-expo install github:echirinos/coinbase-onramp-react-native-sdk
+expo install coinbase-onramp-react-native-sdk
 ```
 
 Next, add the following to your `app.json` file:
@@ -451,7 +452,7 @@ export default OneClickBuyScreen;
 | `getQuote`               | Get a quote for a cryptocurrency purchase                 | `params: QuoteParams`                                     | `Promise<OnrampQuote>`     |
 | `createSessionToken`     | Create a session token for secure authentication          | `params: SessionTokenParams`                              | `Promise<string>`          |
 | `startPurchase`          | Start the cryptocurrency purchase flow                    | `params: PurchaseParams, callbacks?: OnrampEventCallback` | `Promise<string>`          |
-| `generateOneClickBuyUrl` | Generate a one-click-buy URL with a quote                 | `params: OneClickBuyParams`                               |
+| `generateOneClickBuyUrl` | Generate a one-click-buy URL with a quote                 | `params: OneClickBuyParams`                               | `Promise<string>`          |
 
 ## Examples
 
