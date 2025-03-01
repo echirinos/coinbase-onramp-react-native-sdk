@@ -6,6 +6,35 @@ jest.mock("crypto", () => ({
   })),
 }));
 
+// Mock the shim module
+jest.mock("./src/utils/shim", () => {
+  return {
+    __esModule: true,
+    default: {
+      createHmac: jest.fn().mockImplementation(() => ({
+        update: jest.fn().mockReturnThis(),
+        digest: jest.fn().mockReturnValue("mocked-signature"),
+      })),
+      randomBytes: {
+        seed: jest.fn().mockReturnValue(true),
+      },
+    },
+  };
+});
+
+// Mock the utils module
+jest.mock("./src/utils", () => ({
+  shim: {
+    createHmac: jest.fn().mockImplementation(() => ({
+      update: jest.fn().mockReturnThis(),
+      digest: jest.fn().mockReturnValue("mocked-signature"),
+    })),
+    randomBytes: {
+      seed: jest.fn().mockReturnValue(true),
+    },
+  },
+}));
+
 // Mock react-native modules that might not be available in the test environment
 jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");
 
@@ -20,6 +49,17 @@ jest.mock("react-native-webview", () => {
     }),
   };
 });
+
+// Mock react-native-crypto
+jest.mock("react-native-crypto", () => ({
+  createHmac: jest.fn().mockImplementation(() => ({
+    update: jest.fn().mockReturnThis(),
+    digest: jest.fn().mockReturnValue("mocked-signature"),
+  })),
+  randomBytes: jest.fn().mockImplementation((size) => {
+    return Buffer.from(new Array(size).fill(0));
+  }),
+}));
 
 // Mock timers
 jest.useFakeTimers();
@@ -43,3 +83,7 @@ global.fetch = jest.fn().mockImplementation(() =>
     ok: true,
   })
 );
+
+// Set up global variables that might be needed
+global.Buffer = Buffer;
+global.process = process;

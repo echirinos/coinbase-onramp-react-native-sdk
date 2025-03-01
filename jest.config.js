@@ -4,7 +4,7 @@ module.exports = {
   transformIgnorePatterns: [
     "node_modules/(?!((jest-)?react-native|@react-native(-community)?|react-native-webview)/)",
   ],
-  testPathIgnorePatterns: ["/node_modules/", "/lib/"],
+  testPathIgnorePatterns: ["/node_modules/", "/lib/", "/fresh-test/"],
   setupFiles: ["<rootDir>/jest.setup.js"],
   collectCoverageFrom: ["src/**/*.{ts,tsx}", "!src/**/*.d.ts"],
   moduleNameMapper: {
