@@ -1,0 +1,13 @@
+diff --git a/node_modules/coinbase-onramp-react-native-sdk/lib/api/CoinbaseApi.js b/node_modules/coinbase-onramp-react-native-sdk/lib/api/CoinbaseApi.js
+index 6516e4f..478340e 100644
+--- a/node_modules/coinbase-onramp-react-native-sdk/lib/api/CoinbaseApi.js
++++ b/node_modules/coinbase-onramp-react-native-sdk/lib/api/CoinbaseApi.js
+@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.CoinbaseApi = void 0;
+ const axios_1 = __importDefault(require("axios"));
+-const crypto_1 = require("crypto");
++const crypto_1 = require("react-native-crypto");
+ class CoinbaseApi {
+     constructor(config) {
+         this.baseUrls = {

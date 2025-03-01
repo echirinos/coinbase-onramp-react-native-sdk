@@ -1,0 +1,33 @@
+{
+  "name": "coinbase-npm-tester",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "postinstall": "patch-package"
+  },
+  "dependencies": {
+    "buffer": "^6.0.3",
+    "coinbase-onramp-react-native-sdk": "^0.1.2",
+    "events": "^3.3.0",
+    "expo": "~52.0.37",
+    "expo-status-bar": "~2.0.1",
+    "process": "^0.11.10",
+    "react": "18.3.1",
+    "react-native": "0.76.7",
+    "react-native-crypto": "^2.2.0",
+    "stream-browserify": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@types/react": "~18.3.12",
+    "babel-plugin-module-resolver": "^5.0.2",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0",
+    "typescript": "^5.3.3"
+  },
+  "private": true
+}

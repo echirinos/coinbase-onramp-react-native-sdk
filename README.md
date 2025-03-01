@@ -27,38 +27,120 @@ Get started with our [integration guides](#basic-implementation) and [example pr
 
 ## Installation
 
-### React Native CLI
-
 ```bash
-# Using npm
 npm install coinbase-onramp-react-native-sdk
-
-# Using yarn
-yarn add coinbase-onramp-react-native-sdk
 ```
 
-### Expo
+### Required Dependencies
+
+This SDK requires the following dependencies to be installed:
 
 ```bash
-# Using expo
-expo install coinbase-onramp-react-native-sdk
+npm install buffer events process react-native-crypto stream-browserify
 ```
 
-Next, add the following to your `app.json` file:
+### React Native Setup
 
-```json
-{
-  "expo": {
-    "plugins": [
+For React Native projects, you'll need to set up the necessary polyfills for Node.js modules:
+
+#### 1. Create a shim.js file in your project root:
+
+You can import the provided shim directly:
+
+```javascript
+// In your entry point file (e.g., index.js)
+import { shim } from "coinbase-onramp-react-native-sdk";
+```
+
+Or create your own:
+
+```javascript
+// shim.js
+global.Buffer = require("buffer").Buffer;
+global.process = require("process");
+global.EventEmitter = require("events");
+
+// Needed for react-native-crypto
+if (typeof __dirname === "undefined") global.__dirname = "/";
+if (typeof __filename === "undefined") global.__filename = "";
+if (typeof process.browser === "undefined") process.browser = true;
+
+// Initialize crypto
+const crypto = require("react-native-crypto");
+
+// Make crypto globally available
+global.crypto = crypto;
+```
+
+#### 2. Import the shim at the top of your entry point file:
+
+```javascript
+// index.js
+import "./shim";
+import { AppRegistry } from "react-native";
+import App from "./App";
+import { name as appName } from "./app.json";
+
+AppRegistry.registerComponent(appName, () => App);
+```
+
+#### 3. Configure Metro Bundler (metro.config.js):
+
+```javascript
+const { getDefaultConfig } = require("metro-config");
+
+module.exports = (async () => {
+  const {
+    resolver: { sourceExts, assetExts },
+  } = await getDefaultConfig();
+
+  return {
+    transformer: {
+      getTransformOptions: async () => ({
+        transform: {
+          experimentalImportSupport: false,
+          inlineRequires: true,
+        },
+      }),
+    },
+    resolver: {
+      sourceExts,
+      assetExts,
+      extraNodeModules: {
+        crypto: require.resolve("react-native-crypto"),
+        stream: require.resolve("stream-browserify"),
+        buffer: require.resolve("buffer"),
+        events: require.resolve("events"),
+        process: require.resolve("process"),
+      },
+    },
+  };
+})();
+```
+
+#### 4. Configure Babel (babel.config.js):
+
+```javascript
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ["module:metro-react-native-babel-preset"],
+    plugins: [
       [
-        "react-native-webview",
+        "module-resolver",
         {
-          "packageImportPath": "import WebView from 'react-native-webview'"
-        }
-      ]
-    ]
-  }
-}
+          alias: {
+            crypto: "react-native-crypto",
+            stream: "stream-browserify",
+            buffer: "buffer",
+            events: "events",
+            process: "process",
+          },
+        },
+      ],
+    ],
+  };
+};
 ```
 
 ## Requirements
@@ -460,3 +542,25 @@ The SDK includes several example implementations to help you get started:
 
 - [Basic Example](https://github.com/echirinos/coinbase-onramp-react-native-sdk/blob/main/examples/BasicExample.tsx) - Simple implementation using the OnrampButton component
 - [One-Click Buy Example](https://github.com/echirinos/coinbase-onramp-react-native-sdk/blob/main/examples/OneClickBuyExample.tsx) - Implementation of the one-click buy flow
+
+## Troubleshooting
+
+### Crypto Module Issues
+
+If you encounter issues with the crypto module, ensure that:
+
+1. You've imported the shim at the top of your entry point file
+2. You've configured Metro Bundler correctly
+3. You've installed all required dependencies
+
+### WebView Issues
+
+If the WebView is not loading or displaying correctly:
+
+1. Ensure you have the latest version of react-native-webview installed
+2. Check that you have the necessary permissions in your app (internet access)
+3. Verify that the URL being loaded is correct
+
+## License
+
+MIT

@@ -1,3 +1,6 @@
+// Export the shim for users to import
+export { shim } from './utils';
+
 import { CoinbaseOnramp } from './CoinbaseOnramp';
 import {
   OnrampConfig,
