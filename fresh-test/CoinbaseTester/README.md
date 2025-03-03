@@ -1,50 +1,62 @@
-# Welcome to your Expo app 👋
+# Coinbase Onramp React Native Tester
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native application for testing the Coinbase Onramp SDK and direct URL integration.
 
-## Get started
+## Features
 
-1. Install dependencies
+- Basic Example: Test the Coinbase Onramp SDK with pre-populated parameters and dropdown selectors
+- One-Click Buy: Test the one-click buy flow with the Coinbase Onramp SDK
+- Direct URL: Generate and test direct URLs for the Coinbase Onramp flow without using the SDK
+- WebView integration for handling Onramp flows
 
-   ```bash
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or later)
+- Expo CLI
+- A Coinbase Onramp App ID
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```
    npm install
    ```
-
-2. Start the app
-
-   ```bash
-    npx expo start
+3. Copy `.env.example` to `.env` and add your Coinbase App ID:
+   ```
+   cp .env.example .env
+   ```
+4. Start the Expo development server:
+   ```
+   npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+## Environment Variables
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Create a `.env` file in the root directory with the following variables:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+COINBASE_APP_ID=your_app_id_here
+DEFAULT_WALLET_ADDRESS=your_wallet_address_here
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Usage
 
-## Learn more
+- **Basic Example**: Test the basic Coinbase Onramp SDK integration with pre-populated parameters
+- **One-Click Buy**: Test the one-click buy flow with the Coinbase Onramp SDK
+- **Direct URL**: Generate and test direct URLs for the Coinbase Onramp flow without using the SDK
 
-To learn more about developing your project with Expo, look at the following resources:
+## Troubleshooting
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+If you encounter issues with the crypto polyfills or ErrorBoundary, check the following files:
 
-## Join the community
+- `pre-init.js`: Sets up temporary global objects
+- `global-init.js`: Initializes global objects
+- `shim.js`: Provides crypto polyfills
+- `index.js`: Main entry point that imports initialization files
 
-Join our community of developers creating universal apps.
+## License
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This project is licensed under the MIT License - see the LICENSE file for details.

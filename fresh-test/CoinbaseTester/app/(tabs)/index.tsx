@@ -1,4 +1,5 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet, Platform, TouchableOpacity } from 'react-native';
+import { Link } from 'expo-router';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -19,35 +20,48 @@ export default function HomeScreen() {
         <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
       </ThemedView>
+
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+        <ThemedText type="subtitle">Coinbase Onramp SDK Examples</ThemedText>
         <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
+          This app demonstrates how to use the Coinbase Onramp SDK in a React Native application.
         </ThemedText>
       </ThemedView>
+
+      <ThemedView style={styles.buttonContainer}>
+        <Link href="/(tabs)/coinbase" asChild>
+          <TouchableOpacity style={styles.button}>
+            <ThemedText style={styles.buttonText}>SDK Tester</ThemedText>
+          </TouchableOpacity>
+        </Link>
+
+        <Link href="/(tabs)/basic-example" asChild>
+          <TouchableOpacity style={styles.button}>
+            <ThemedText style={styles.buttonText}>Basic Example</ThemedText>
+          </TouchableOpacity>
+        </Link>
+
+        <Link href="/(tabs)/one-click-buy" asChild>
+          <TouchableOpacity style={styles.button}>
+            <ThemedText style={styles.buttonText}>One-Click Buy Example</ThemedText>
+          </TouchableOpacity>
+        </Link>
+      </ThemedView>
+
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
+        <ThemedText type="subtitle">About the Examples</ThemedText>
         <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
+          <ThemedText type="defaultSemiBold">Basic Example:</ThemedText> A simple implementation that shows how to initialize the SDK, fetch supported assets, and start a purchase flow.
+        </ThemedText>
+        <ThemedText>
+          <ThemedText type="defaultSemiBold">One-Click Buy Example:</ThemedText> Demonstrates how to generate quotes and create one-click buy URLs for a streamlined purchase experience.
         </ThemedText>
       </ThemedView>
+
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
+        <ThemedText type="subtitle">SDK Tester</ThemedText>
         <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
+          The SDK Tester tab provides a comprehensive interface to test all the SDK's functionality, including initialization, configuration, quotes, and more.
         </ThemedText>
       </ThemedView>
     </ParallaxScrollView>
@@ -62,7 +76,7 @@ const styles = StyleSheet.create({
   },
   stepContainer: {
     gap: 8,
-    marginBottom: 8,
+    marginBottom: 16,
   },
   reactLogo: {
     height: 178,
@@ -70,5 +84,20 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: 'absolute',
+  },
+  buttonContainer: {
+    gap: 10,
+    marginBottom: 20,
+  },
+  button: {
+    backgroundColor: '#0052FF',
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
